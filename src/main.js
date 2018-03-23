@@ -10,4 +10,9 @@ $(document).ready(function() {
     let selectedIllness = $("#illness").val();
     newDocSearch.searchByIllness(selectedIllness);
   });
+  $('#doctorSearch').click(function() {
+    let docName = $('#dr-name').val();
+    console.log(docName);
+    newDocSearch.searchByDoctor(docName);
+  });
 });
