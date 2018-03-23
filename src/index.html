@@ -4,16 +4,18 @@
   </head>
   <body>
     <div class="container">
-      <h1>Get information on medical professionals in your area!</h1>
-      <label for="illness">Find a doctor by medical condition: </label>
+      <div class="jumbotron">
+        <h1>Get information on medical professionals in Seattle!</h1>
+      </div>
+      <label for="illness">Filter doctors by medical condition: </label>
       <input id="illness" type="text">
       <button class="btn btn-info" id="illnessSearch">Search</button>
       <hr>
-      <label for="dr-name">Find a doctor by first or last name: </label>
+      <label for="dr-name">Filter doctors by first or last name: </label>
       <input id="dr-name" type="text">
       <button class="btn btn-info" id="doctorSearch">Search</button>
       <hr>
-      <h3>Doctor information:</h3>
+      <h3 id="docInfo">Doctor information:</h3>
       <div class="showIllnessSearch">
       </div>
       <div class="showDoctorSearch">

@@ -12,11 +12,11 @@ _This webpage takes either an illness or a name from a user and returns either d
 
 * _Program returns doctors in an area that specialize in an illness/procedure_
 	* _Example input: 'back pain'_
-	* _Example output: 'John Doe, West Seattle; Jane Doe, Capitol Hill'_
+	* _Example output: 'John Doe, phone:123-456-7890; Jane Doe, phone:123-456-7890'_
 
-* _Program returns doctor information for any doctor whose name matches the input_
+* _Program returns additional doctor information for any doctor whose name matches the input_
 	* _Example input: 'Bob'_
-	* _Example output: 'Bob Small, Pediatrician, Pioneer Square; Bobby Brown, Brain Surgeon, Laurelhurst'_
+	* _Example output: 'Bob Small, phone:123-456-7890, Pioneer Square, bobsmall@gmail.com; Bobby Brown, phone:123-456-7890, Laurelhurst, bobbrown@gmail.com'_
 
 * _Program returns an error message if the query fails_
 	* _Example input: 'Bob'_
@@ -29,7 +29,6 @@ _This webpage takes either an illness or a name from a user and returns either d
 ## Setup/Installation Requirements
 
 * _Clone this repository_
-
 * _Go to the Better Doctor API, create an account, and access your api key_
 * _Create an .env file and put your key there as exports.apiKey="your key here"_
 * _Add the .env file to your .gitignore file_

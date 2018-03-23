@@ -11,13 +11,18 @@ export class doctorLookup {
     $.get(`https://api.betterdoctor.com/2016-03-01/doctors?user_key=${process.env.exports.apiKey}&location=47.6062,-122.3321,25&query=${illness}`).then(function(response) {
       if (response.data.length === 0) {
         $('.showIllnessSearch').html(`<h3>We're sorry. We couldn't find any doctors in your area that can help with ${illness}.`);
-      }
+      } else {
+        $('.showIllnessSearch').empty();
         for (let i=0 ; i<response.data.length; i++ ) {
           let firstName = response.data[i].profile.first_name;
           let lastName = response.data[i].profile.last_name;
           let bio = response.data[i].profile.bio;
+          if (bio === undefined || bio === "") {
+            bio = "not available for this doctor";
+          }
           let phone = response.data[i].practices[0].phones[0].number;
-          $('.showIllnessSearch').append(`<div class="card"><h3 class="card-title">Name: ${firstName} ${lastName}</h3><h6 class="card-body">Phone: ${phone}</h6><h6 class="card-body">Bio:  ${bio}</h6>`);
+          $('.showIllnessSearch').append(`<div class="card"><h3 class="card-title">Name: ${firstName} ${lastName}</h3><h6>Phone: ${phone}</h6><h6>Bio: ${bio}</h6>`);
+          }
         }
     }).fail(function(error) {
       $('.showIllnessSearch').text(`There was an error processing your request: ${error.message}. Please try again.`);
@@ -26,8 +31,9 @@ export class doctorLookup {
   searchByDoctor(doctor) {
     $.get(`https://api.betterdoctor.com/2016-03-01/doctors?user_key=${process.env.exports.apiKey}&location=47.6062,-122.3321,25&name=${doctor}`).then(function(response) {
       if (response.data.length === 0) {
-        $('.showIllnessSearch').html(`<h3>We're sorry. We couldn't find any doctors in your area with a name that contains "${illness}".`);
-      }
+        $('.showDoctorSearch').html(`<h3>We're sorry. We couldn't find any doctors in your area with a name that contains "${doctor}".`);
+      } else {
+        $('.showDoctorSearch').empty();
         for (let i=0 ; i<response.data.length; i++ ) {
           let firstName = response.data[i].profile.first_name;
           let lastName = response.data[i].profile.last_name;
@@ -38,12 +44,13 @@ export class doctorLookup {
             website = "not available for this doctor";
           }
           let acceptingPatients = response.data[i].practices[0].accepts_new_patients;
-          $('.showIllnessSearch').append(`<div class="card"><h3 class="card-title">Name: ${firstName} ${lastName}</h3><h6>Phone: ${phone}</h6><h6><h6>Address:  ${address}</h6><h6>Website: ${website}</h6><h6>Accepting patients: ${acceptingPatients}</h6>`);
+          $('.showDoctorSearch').append(`<div class="card"><h3 class="card-title">Name: ${firstName} ${lastName}</h3><h6>Phone: ${phone}</h6><h6><h6>Address:  ${address}</h6><h6>Website: ${website}</h6><h6>Accepting patients: ${acceptingPatients}</h6>`);
         }
+      }
     }).fail(function(error) {
       console.log(error);
       console.log(error.meta);
-      $('.showIllnessSearch').text(`There was an error processing your request: ${error.message}. Please try again.`);
+      $('.showDoctorSearch').text(`There was an error processing your request: ${error.message}. Please try again.`);
     });
   }
 }
