@@ -34,7 +34,7 @@ _This webpage takes either an illness or a name from a user and returns either d
 * _Create an .env file and put your key there as exports.apiKey="your key here"_
 * _Add the .env file to your .gitignore file_
 * _On a Mac, run the following commands in terminal:_
-* _npm install dotenv-webpack --save-dev and add the plugin to your webpack.config.js file_
+* _npm install dotenv-webpack --save-dev (and add the plugin to your webpack.config.js file)_
 * _npm install_
 * _npm run start_
 * _Input an illness or a doctor name to see options in your local area._
